@@ -3,6 +3,7 @@ package com.sxgnhs.user.mapper;
 import com.sxgnhs.user.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.mapstruct.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * <p>
@@ -13,6 +14,7 @@ import org.mapstruct.Mapper;
  * @since 2020-12-08
  */
 @Mapper
+@Repository
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
 }

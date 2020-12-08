@@ -23,10 +23,25 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
 
     @Autowired
     private SysUserMapper sysUserMapper;
+
     @Override
     public List<SysUser> selectAll() {
         QueryWrapper<SysUser> wrapper = new QueryWrapper();
-        wrapper.ge("id",100);
+        wrapper.ge("id", 100);
         return sysUserMapper.selectList(wrapper);
+    }
+
+    @Override
+    public SysUser selectByName(String loginName) {
+        QueryWrapper<SysUser> wrapper = new QueryWrapper();
+        wrapper.eq("login_name", loginName);
+        return sysUserMapper.selectOne(wrapper);
+    }
+
+    @Override
+    public SysUser selectById(Long id) {
+        QueryWrapper<SysUser> wrapper = new QueryWrapper();
+        wrapper.eq("id", id);
+        return sysUserMapper.selectOne(wrapper);
     }
 }

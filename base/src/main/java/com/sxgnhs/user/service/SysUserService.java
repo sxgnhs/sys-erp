@@ -17,4 +17,7 @@ public interface SysUserService extends IService<SysUser> {
 
     List<SysUser> selectAll();
 
+    SysUser selectByName(String loginName);
+
+    SysUser selectById(Long id);
 }

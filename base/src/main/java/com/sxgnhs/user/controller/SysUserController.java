@@ -24,11 +24,25 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
-    @ApiOperation(value = "查询购物车商品列表")
-    @PostMapping("select")
-    public ApiResult select() {
-        List<SysUser> dShoppingCartList = sysUserService.selectAll();
-        return ApiResult.ok(dShoppingCartList);
+    @ApiOperation(value = "获取全部用户")
+    @GetMapping("selectAll")
+    public ApiResult selectAll() {
+        List<SysUser> sysUserList = sysUserService.selectAll();
+        return ApiResult.ok(sysUserList);
+    }
+
+    @ApiOperation(value = "根据loginName获取用户")
+    @GetMapping("selectByName/{loginName}")
+    public ApiResult selectByName(@PathVariable("loginName") String loginName) {
+        SysUser sysUser = sysUserService.selectByName(loginName);
+        return ApiResult.ok(sysUser);
+    }
+
+    @ApiOperation(value = "根据id获取用户")
+    @GetMapping("selectById/{id}")
+    public ApiResult selectById(@PathVariable("id") Long id) {
+        SysUser sysUser = sysUserService.selectById(id);
+        return ApiResult.ok(sysUser);
     }
 
 
