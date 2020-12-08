@@ -25,23 +25,45 @@ public class SysUserController {
     private SysUserService sysUserService;
 
     @ApiOperation(value = "获取全部用户")
-    @GetMapping("selectAll")
+    @GetMapping("")
     public ApiResult selectAll() {
         List<SysUser> sysUserList = sysUserService.selectAll();
         return ApiResult.ok(sysUserList);
     }
 
-    @ApiOperation(value = "根据loginName获取用户")
-    @GetMapping("selectByName/{loginName}")
-    public ApiResult selectByName(@PathVariable("loginName") String loginName) {
-        SysUser sysUser = sysUserService.selectByName(loginName);
+
+    @ApiOperation(value = "根据id获取用户")
+    @GetMapping("{id}")
+    public ApiResult getUser(@PathVariable("id") Long id) {
+        SysUser sysUser = sysUserService.getUser(id);
         return ApiResult.ok(sysUser);
     }
 
-    @ApiOperation(value = "根据id获取用户")
-    @GetMapping("selectById/{id}")
-    public ApiResult selectById(@PathVariable("id") Long id) {
-        SysUser sysUser = sysUserService.selectById(id);
+    @ApiOperation(value = "根据id修改用户")
+    @PutMapping("{id}")
+    public ApiResult updateUserById(@PathVariable("id") Long id) {
+        SysUser sysUser = sysUserService.updateUserById(id);
+        return ApiResult.ok(sysUser);
+    }
+
+    @ApiOperation(value = "修改用户")
+    @PutMapping()
+    public ApiResult updateUser(@RequestBody SysUser sysUser) {
+        int re = sysUserService.updateUser(sysUser);
+        return ApiResult.ok(re);
+    }
+
+    @ApiOperation(value = "新增用户")
+    @PostMapping()
+    public ApiResult addUser(@RequestBody SysUser sysUser) {
+        int re = sysUserService.addUser(sysUser);
+        return ApiResult.ok(re);
+    }
+
+    @ApiOperation(value = "根据id删除用户")
+    @DeleteMapping("{id}")
+    public ApiResult delUser(@PathVariable("id") Long id) {
+        int sysUser = sysUserService.delUser(id);
         return ApiResult.ok(sysUser);
     }
 

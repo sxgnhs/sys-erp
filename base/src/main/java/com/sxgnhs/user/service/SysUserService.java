@@ -9,7 +9,6 @@ import java.util.List;
  * <p>
  * 用户表 服务类
  * </p>
- *
  * @author sxgn
  * @since 2020-12-08
  */
@@ -17,7 +16,14 @@ public interface SysUserService extends IService<SysUser> {
 
     List<SysUser> selectAll();
 
-    SysUser selectByName(String loginName);
+    SysUser getUser(Long id);
 
-    SysUser selectById(Long id);
+    SysUser updateUserById(Long id);
+
+    int delUser(Long id);
+
+    int updateUser(SysUser sysUser);
+
+    int addUser(SysUser sysUser);
+
 }

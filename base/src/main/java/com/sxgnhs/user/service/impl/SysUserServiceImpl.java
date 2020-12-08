@@ -27,21 +27,48 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
     @Override
     public List<SysUser> selectAll() {
         QueryWrapper<SysUser> wrapper = new QueryWrapper();
-        wrapper.ge("id", 100);
         return sysUserMapper.selectList(wrapper);
     }
 
+
+
     @Override
-    public SysUser selectByName(String loginName) {
+    public SysUser getUser(Long id) {
         QueryWrapper<SysUser> wrapper = new QueryWrapper();
-        wrapper.eq("login_name", loginName);
+        wrapper.eq("id", id);
         return sysUserMapper.selectOne(wrapper);
     }
 
     @Override
-    public SysUser selectById(Long id) {
+    public SysUser updateUserById(Long id) {
         QueryWrapper<SysUser> wrapper = new QueryWrapper();
         wrapper.eq("id", id);
-        return sysUserMapper.selectOne(wrapper);
+        SysUser sysUser = sysUserMapper.selectOne(wrapper);
+        if (sysUser!=null){
+            int res = sysUserMapper.updateUser(id);
+        }
+        SysUser newUser = sysUserMapper.selectOne(wrapper);
+
+        return newUser;
+    }
+
+    @Override
+    public int delUser(Long id) {
+        QueryWrapper<SysUser> wrapper = new QueryWrapper();
+        wrapper.eq("id", id);
+        return sysUserMapper.delete( wrapper);
+    }
+
+    @Override
+    public int updateUser(SysUser sysUser) {
+        QueryWrapper<SysUser> wrapper = new QueryWrapper();
+        wrapper.eq("id", sysUser.getId());
+        return sysUserMapper.update(sysUser, wrapper);
+    }
+
+    @Override
+    public int addUser(SysUser sysUser) {
+
+        return  sysUserMapper.insert(sysUser);
     }
 }
