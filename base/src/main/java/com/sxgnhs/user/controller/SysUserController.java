@@ -1,12 +1,14 @@
 package com.sxgnhs.user.controller;
 
 
-import com.sun.deploy.net.HttpResponse;
+import com.sxgnhs.api.ApiResult;
+import com.sxgnhs.user.entity.SysUser;
 import com.sxgnhs.user.service.SysUserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * <p>
@@ -22,6 +24,12 @@ public class SysUserController {
     @Autowired
     private SysUserService sysUserService;
 
+    @ApiOperation(value = "查询购物车商品列表")
+    @PostMapping("select")
+    public ApiResult select() {
+        List<SysUser> dShoppingCartList = sysUserService.selectAll();
+        return ApiResult.ok(dShoppingCartList);
+    }
 
 
 }

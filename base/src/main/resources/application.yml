@@ -1,5 +1,7 @@
 server:
   port: 9001
+  servlet:
+    context-path: /base
 spring:
   application:
     name: erp-base-server
@@ -10,3 +12,38 @@ mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mapper/**/*.xml
+
+
+spring-boot-plus:
+  swagger:
+    # 是否启用
+    enable: true
+    base:
+      # 扫描的包，多个包使用逗号隔开
+      package: com.sxgnhs
+    contact:
+      email: a
+      name: a
+      url: a
+    description:
+    title: ${spring.application.name} API Documents
+    url: a
+    version: ${project.version}
+    # 自定义参数配置，可配置N个
+    parameter-config:
+      - name: ${spring-boot-plus.jwt.token-name}
+        description: Token Request Header
+        # header, cookie, body, query
+        type: header
+        data-type: String
+        required: false
+        # 测试接口时，自动填充token的值
+        default-value:
+
+# knife4j配置
+knife4j:
+  enable: ${spring-boot-plus.swagger.enable}
+  basic:
+    enable: true
+    username: admin
+    password: admin

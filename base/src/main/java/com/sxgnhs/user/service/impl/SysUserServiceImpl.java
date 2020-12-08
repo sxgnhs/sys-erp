@@ -1,10 +1,14 @@
 package com.sxgnhs.user.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.sxgnhs.user.entity.SysUser;
 import com.sxgnhs.user.mapper.SysUserMapper;
 import com.sxgnhs.user.service.SysUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,4 +21,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> implements SysUserService {
 
+    @Autowired
+    private SysUserMapper sysUserMapper;
+    @Override
+    public List<SysUser> selectAll() {
+        QueryWrapper<SysUser> wrapper = new QueryWrapper();
+        wrapper.ge("id",100);
+        return sysUserMapper.selectList(wrapper);
+    }
 }

@@ -2,6 +2,7 @@ package com.sxgnhs.user.mapper;
 
 import com.sxgnhs.user.entity.SysUser;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.mapstruct.Mapper;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author sxgn
  * @since 2020-12-08
  */
+@Mapper
 public interface SysUserMapper extends BaseMapper<SysUser> {
 
 }
