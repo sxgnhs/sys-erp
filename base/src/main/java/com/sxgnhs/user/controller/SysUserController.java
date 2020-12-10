@@ -5,6 +5,7 @@ import com.sxgnhs.api.ApiResult;
 import com.sxgnhs.user.entity.SysUser;
 import com.sxgnhs.user.service.SysUserService;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ import java.util.List;
  * @author sxgn
  * @since 2020-12-08
  */
+@Slf4j
 @RestController
 @RequestMapping("/user/sys-user")
 public class SysUserController {
@@ -28,6 +30,12 @@ public class SysUserController {
     @GetMapping("")
     public ApiResult selectAll() {
         List<SysUser> sysUserList = sysUserService.selectAll();
+        log.info("sysUserList:{}",sysUserList);
+        log.info("sysUserList:{}",sysUserList);
+        log.info("sysUserList:{}",sysUserList);
+        log.info("sysUserList:{}",sysUserList);
+        log.error("sysUserList:{}");
+
         return ApiResult.ok(sysUserList);
     }
 

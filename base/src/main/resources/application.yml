@@ -40,10 +40,15 @@ spring-boot-plus:
         # 测试接口时，自动填充token的值
         default-value:
 
-# knife4j配置
-knife4j:
-  enable: ${spring-boot-plus.swagger.enable}
-  basic:
-    enable: true
-    username: admin
-    password: admin
+## knife4j配置
+#knife4j:
+#  enable: ${spring-boot-plus.swagger.enable}
+#  basic:
+#    enable: true
+#    username: admin
+#    password: admin
+#logging:
+#  config:
+#    classpath: log4j2.xml
+#    classpath: log4j2.xml
+

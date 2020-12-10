@@ -1,0 +1,6 @@
+spring:
+  #原测试库
+  datasource:
+    url: jdbc:mysql://192.168.110.115:3306/erp_sys?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
