@@ -47,8 +47,4 @@ spring-boot-plus:
 #    enable: true
 #    username: admin
 #    password: admin
-#logging:
-#  config:
-#    classpath: log4j2.xml
-#    classpath: log4j2.xml
 
